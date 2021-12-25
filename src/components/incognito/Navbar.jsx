@@ -20,34 +20,36 @@ const Navbar = (props) => {
   // }
   const data = [
     {
-      name: 'Html',
+      name: 'html',
       img: html,
     },
     {
-      name: 'Javascript',
+      name: 'javascript',
       img: js,
     }
     ,
     {
-      name: 'Java',
+      name: 'java',
       img: java,
     },
     {
-      name: 'Flutter',
+      name: 'flutter',
       img: Flutter,
     },
+    // {
+    //   name: 'Python',
+    //   img: python,
+    // },
     {
-      name: 'Python',
-      img: python,
-    },
-    {
-      name: 'React',
+      name: 'react',
       img: react1,
     },
-    {
-      name: 'Selenium',
-      img: selenium,
-    }]
+    // {
+    //   name: 'Selenium',
+    //   img: selenium,
+    // }
+
+  ]
 
   return (
     <div>

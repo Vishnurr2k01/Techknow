@@ -13,13 +13,16 @@ function Chat(props) {
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState()
     const { user } = useContext(AuthContext)
-    const { name } = useContext(nameContext)
+    const { name } = useContext(nameContext);
     const d = new Date()
     let ida = d.toString()
-
+    var head = name.toString()
+    var title = head.toUpperCase()
     const curr_user = auth.currentUser.uid
+
+
     const func = () => {
-        db.collection('messages').orderBy('createdAt').limit(20).get()
+        db.collection('serverdata').doc(`${name}`).collection('messages').orderBy('createdAt').limit(20).get()
             .then((snapshot) => {
                 const data = snapshot.docs.map((doc) => {
                     console.log(doc.data());
@@ -35,7 +38,7 @@ function Chat(props) {
 
     useEffect(() => {
         func();
-    }, [db])
+    }, [db, name])
 
     const handleOnChange = (e) => {
         setNewMessage(e.target.value)
@@ -43,7 +46,7 @@ function Chat(props) {
     const handleOnSubmit = e => {
         e.preventDefault()
         if (db) {
-            db.collection('messages').add({
+            db.collection('serverdata').doc(`${name}`).collection('messages').add({
                 text: newMessage,
                 createdAt: d,
                 ida: curr_user
@@ -55,7 +58,7 @@ function Chat(props) {
     console.log(curr_user)
     return (
         <div className="chat">
-            <div className="chathead"><div className=""><h2> {name} </h2></div>
+            <div className="chathead"><div className=""><h2> {title} </h2></div>
                 <div className="icons">
                     <FiSettings />
                     <BiDotsVerticalRounded />

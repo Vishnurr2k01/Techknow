@@ -9,7 +9,7 @@ import '../stylesheet/mainstyle.css'
 import { nameContext } from '../../store/name'
 import Blog from './Blog'
 const Home = () => {
-    const [head, setHead] = useState('Html');
+    const [head, setHead] = useState('html');
 
     return (
         <div>
